@@ -1,0 +1,23 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^travelfreakvacations\.com
+RewriteRule ^(.*)$ http://www.travelfreakvacations.com/$1 [R=permanent,L]
+
+
+# Rewrite all URLs to www.example.com URLs (except www)
+#RewriteEngine On
+#RewriteBase /
+#RewriteCond %{HTTP_HOST} !^www\.example\.com$ [NC]
+#RewriteRule ^(.*)$ http://www.example.com/$1 [R=301,L]
+
+# Hide PHP and HTML extensions in the URL:
+# https://www.inmotionhosting.com/support/website/htaccess/remove-file-extensions
+RewriteEngine on 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME}\.php -f 
+RewriteRule ^(.*)$ $1.php
+
+RewriteEngine on 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME}\.html -f 
+RewriteRule ^(.*)$ $1.html
